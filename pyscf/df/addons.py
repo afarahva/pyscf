@@ -52,8 +52,10 @@ DEFAULT_AUXBASIS = {
     'def2svp'     : ('def2-svp-jkfit'         , 'def2-svp-ri'        ),
     'def2svpd'    : ('def2-svp-jkfit'         , 'def2-svpd-ri'       ),
     'def2tzvp'    : ('def2-tzvp-jkfit'        , 'def2-tzvp-ri'       ),
+    'def2mtzvp'   : ('def2-tzvp-jkfit'        , 'def2-tzvp-ri'       ),
     'def2tzvpd'   : ('def2-tzvp-jkfit'        , 'def2-tzvpd-ri'      ),
     'def2tzvpp'   : ('def2-tzvpp-jkfit'       , 'def2-tzvpp-ri'      ),
+    'def2mtzvpp'  : ('def2-tzvpp-jkfit'       , 'def2-tzvpp-ri'      ),
     'def2tzvppd'  : ('def2-tzvpp-jkfit'       , 'def2-tzvppd-ri'     ),
     'def2qzvp'    : ('def2-qzvp-jkfit'        , 'def2-qzvp-ri'       ),
     'def2qzvpd'   : ('def2-qzvp-jkfit'        , None                 ),
@@ -151,8 +153,8 @@ def aug_etb_for_dfbasis(mol, dfbasis=DFBASIS, beta=ETB_BETA,
             if etb:
                 newbasis[symb] = gto.expand_etbs(etb)
                 for l, n, emin, beta in etb:
-                    logger.info(mol, 'l = %d, exps = %s * %g^n for n = 0..%d',
-                                l, emin, beta, n-1)
+                    logger.info(mol, 'ETB for %s: l = %d, exps = %s * %g^n , n = 0..%d',
+                                symb, l, emin, beta, n-1)
             else:
                 raise RuntimeError(f'Failed to generate even-tempered auxbasis for {symb}')
 
