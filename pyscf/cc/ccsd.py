@@ -100,6 +100,9 @@ def kernel(mycc, eris=None, t1=None, t2=None, max_cycle=50, tol=1e-8,
     log.timer(name, *cput0)
     return converged, eccsd, t1, t2
 
+def init_amps_by_chkfile():
+    return None
+
 
 def update_amps(mycc, t1, t2, eris):
     if mycc.cc2:
